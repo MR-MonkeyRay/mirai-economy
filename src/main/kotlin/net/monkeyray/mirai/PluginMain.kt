@@ -3,6 +3,8 @@ package net.monkeyray.mirai
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
 import net.mamoe.mirai.utils.info
+import net.monkeyray.mirai.data.EconomyData
+import net.monkeyray.mirai.setting.EconomyConfig
 
 object PluginMain : KotlinPlugin(
     JvmPluginDescription(
@@ -20,7 +22,8 @@ object PluginMain : KotlinPlugin(
     }
 ) {
     override fun onEnable() {
-        logger.info { "Plugin loaded" }
-        //配置文件目录 "${dataFolder.absolutePath}/"
+        EconomyConfig.reload()
+        EconomyData.reload()
+        logger.info { "Mirai Economy Plugin loaded" }
     }
 }
