@@ -10,7 +10,7 @@ object PluginMain : KotlinPlugin(
     JvmPluginDescription(
         id = "net.monkeyray.mirai-economy",
         name = "插件示例",
-        version = "0.1.0"
+        version = "0.1.1"
     ) {
         author("MonkeyRay")
         info(

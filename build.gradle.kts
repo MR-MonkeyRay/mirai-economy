@@ -2,14 +2,32 @@ plugins {
     val kotlinVersion = "1.6.21"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
-
+    id ("maven-publish")
+    id ("java-gradle-plugin")
     id("net.mamoe.mirai-console") version "2.11.1"
 }
 
 group = "net.monkeyray.mirai"
-version = "0.1.0"
+version = "0.1.1"
 
 repositories {
     maven("https://maven.aliyun.com/repository/public") // 阿里云国内代理仓库
     mavenCentral()
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "$group"
+            artifactId = "mirai-economy"
+            version = version
+
+            from(components["java"])
+        }
+    }
 }
